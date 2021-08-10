@@ -9,12 +9,17 @@
 <body>
 
     <header>
-        <h1 id="global_title">Wowptimiste</h1>
+        <h1 id="global_title"><a href="index.html">Wowptimiste</a></h1>
         <ul id="nav">
             <!--TODO: trouver une solution pour ce problème d'ancrage ( scroll mal jusqu'en au ) -->
-            <li><a href="#best_film">Accueil</a></li>
-            <!--TODO: créer un menu dropdown en hover sur le boutton catégories -->
-            <li>Catégories</li>
+            <li><a href="#best_film" id="home_button">Accueil</a></li>
+            <li id="categories_button">Catégories
+                <div class="dropdown-menu">
+                    <a href="#category1_section">Catégorie 1</a>
+                    <a href="#category2_section">Catégorie 2</a>
+                    <a href="#category3_section">Catégorie 3</a>
+                </div>
+            </li>
         </ul>
     </header>
 
@@ -22,6 +27,9 @@
         <section id="best_film" class="categories">
             <!--TODO: ajouter le contenu du meilleur film -->
             <h1 class="categories_title">Le meilleur film</h1>
+            <a href="#" id="first_film">
+                <img src="./images_wow/banniere_sl.jpg" alt="bannière wow shadowlands">
+            </a>
         </section>
 
         <section id="best_rated" class="categories">
