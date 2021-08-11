@@ -11,25 +11,35 @@
     <header>
         <h1 id="global_title"><a href="index.html">Wowptimiste</a></h1>
         <ul id="nav">
-            <!--TODO: trouver une solution pour ce problème d'ancrage ( scroll mal jusqu'en au ) -->
-            <li><a href="#best_film" id="home_button">Accueil</a></li>
-            <li id="categories_button">Catégories
+            <!--TODO: trouver une solution pour ce problème d'ancrage ( scroll mal jusqu'en haut ) -->
+            <li><a href="#" class="button" id="home_button">Accueil</a></li>
+            <li class="button" id="categories_button">Catégories
                 <div class="dropdown-menu">
-                    <a href="#category1_section">Catégorie 1</a>
-                    <a href="#category2_section">Catégorie 2</a>
-                    <a href="#category3_section">Catégorie 3</a>
+                    <a href="#category1_section">Action</a>
+                    <a href="#category2_section">Comédie</a>
+                    <a href="#category3_section">Drame</a>
                 </div>
             </li>
         </ul>
     </header>
 
     <main>
-        <section id="best_film" class="categories">
+        <section id="first_film" class="categories">
             <!--TODO: ajouter le contenu du meilleur film -->
             <h1 class="categories_title">Le meilleur film</h1>
-            <a href="#" id="first_film">
-                <img src="./images_wow/banniere_sl.jpg" alt="bannière wow shadowlands">
-            </a>
+            <div id="first_film_container">
+                <div id="first_film_text_content">
+                    <a href="#first_film_modal"><button class="first_film_button">En savoir plus</button></a>
+                    <h2 id="first_film_title">Shadowlands</h2>
+                    <p id="first_film_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
+                        Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                        Cras elementum ultrices diam.</p>
+                </div>
+                <a href="#first_film_modal" id="first_film_link">
+                    <img src="./images_wow/shadowlands.jpg" alt="bannière wow shadowlands">
+                </a>
+            </div>
+
         </section>
 
         <section id="best_rated" class="categories">
@@ -69,7 +79,7 @@
         </section>
 
         <section class="categories">
-            <h1 class="categories_title">Catégorie 1</h1>
+            <h1 class="categories_title">Action</h1>
             <div class="thumbnails_container" id="category1_section">
 
                 <a href="#vanilla_modal">
@@ -105,7 +115,7 @@
         </section>
 
         <section class="categories">
-            <h1 class="categories_title">Catégorie 2</h1>
+            <h1 class="categories_title">Comédie</h1>
             <div class="thumbnails_container" id="category2_section">
 
                 <a href="#vanilla_modal">
@@ -141,7 +151,7 @@
         </section>
 
         <section class="categories">
-            <h1 class="categories_title">Catégorie 3</h1>
+            <h1 class="categories_title">Drame</h1>
             <div class="thumbnails_container" id="category3_section">
 
                 <a href="#vanilla_modal">
@@ -178,66 +188,203 @@
 
     </main>
         <!-- TODO : définir le contenu de la fenêtre modale -->
+        <div id="first_film_modal" class="modal">
+            <div class="modal_content">
+                <div>
+                    <h2>Shadowlands</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/shadowlands.jpg" alt="shadowlands" class="modal_img">
+                <a href="" class="modal_close">&times</a>
+            </div>
+        </div>
         <div id="vanilla_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Vanilla</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/wow_vanilla.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="bc_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Burning crusade</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/burning_crusade.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="tlk_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Wrath of the Lich King</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/the_lich_king.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="cataclysm_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Cataclysm</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/cataclysm.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="mop_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Mist of Pandaria</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/mist_of_pandaria.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="wod_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Warlords of Draenor</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/warlords_of_draenor.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="legion_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Legion</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/legion.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="bfa_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Batlle for Azeroth</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/battle_for_azeroth.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
         <div id="shadowlands_modal" class="modal">
             <div class="modal_content">
-                <h1>Hello World</h1>
-                <p>Bienvenu dans la fenêtre modale !</p>
+                <div>
+                    <h2>Shadowlands</h2>
+                    <p>Genre : gaming
+                    Date de sortie : 24/11/2020
+                    Note :
+                    Score IMDB :
+                    Réalisateur :
+                    Liste des acteurs :
+                    Durée :
+                    Pays d'origine :
+                    Résultats au box-office :
+                    Résumé :
+                    </p>
+                </div>
+                <img src="./images_wow/shadowlands.jpg" alt="shadowlands" class="modal_img">
                 <a href="" class="modal_close">&times</a>
             </div>
         </div>
