@@ -3,9 +3,9 @@ var scrollPerClick;
 
 var scrollAmount
 var scrollAmount_best_rated_section = 0;
-var scrollAmount_category1_section = 0;
-var scrollAmount_category2_section = 0;
-var scrollAmount_category3_section = 0;
+var scrollAmount_category1_slider = 0;
+var scrollAmount_category2_slider = 0;
+var scrollAmount_category3_slider = 0;
 
 function ScrollLeft(id) {
     const sliders = document.querySelector("#"+id);
@@ -34,3 +34,7 @@ function ScrollRight(id) {
 }
 
 scrollPerClick = document.querySelector(".thumbnails_container").clientWidth + 20;
+
+function scrollToHash(hashName) {
+    location.hash = "#" + hashName;
+}

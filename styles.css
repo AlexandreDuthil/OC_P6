@@ -4,6 +4,7 @@
     box-sizing: border-box;
     background-color: black;
     color: white;
+    scroll-behavior: smooth
 }
 body {
     font-family: Arial, sans-serif;
@@ -236,6 +237,9 @@ ul {
     padding: 10px;
     margin: 20px;
     border-radius: 15px;
+}
+#category1_section, #category2_section, #category3_section {
+    scroll-margin-top: 100px;
 }
 @media(max-width: 720px){
     .thumbnails {
