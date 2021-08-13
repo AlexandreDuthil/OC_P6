@@ -1,11 +1,12 @@
 
 var scrollPerClick;
 
-var scrollAmount
 var scrollAmount_best_rated_section = 0;
 var scrollAmount_category1_slider = 0;
 var scrollAmount_category2_slider = 0;
 var scrollAmount_category3_slider = 0;
+
+getMoviesData();
 
 function ScrollLeft(id) {
     const sliders = document.querySelector("#"+id);
@@ -35,6 +36,20 @@ function ScrollRight(id) {
 
 scrollPerClick = document.querySelector(".thumbnails_container").clientWidth + 20;
 
-function scrollToHash(hashName) {
-    location.hash = "#" + hashName;
+console.log(getMoviesData("year=2000"))
+function getMoviesData(params) {
+    let request = new Request("http://localhost:8000/api/v1/titles/?"+params,
+        {method: 'GET'});
+    let result = fetch(request)
+        .then(function(res){
+            if(res.ok){
+                return res.json();
+            }
+        })
+        .then(function(value){
+            console.log(value);
+            return value
+        })
+        .catch(function(err){
+        });
 }
