@@ -6,8 +6,6 @@ var scrollAmount_category1_slider = 0;
 var scrollAmount_category2_slider = 0;
 var scrollAmount_category3_slider = 0;
 
-getMoviesData();
-
 function ScrollLeft(id) {
     const sliders = document.querySelector("#"+id);
     var scrollTotal = "scrollAmount_" + id
@@ -36,7 +34,10 @@ function ScrollRight(id) {
 
 scrollPerClick = document.querySelector(".thumbnails_container").clientWidth + 20;
 
-console.log(getMoviesData("year=2000"))
+array = getMoviesData("year=2000");
+console.log(array);
+
+
 function getMoviesData(params) {
     let request = new Request("http://localhost:8000/api/v1/titles/?"+params,
         {method: 'GET'});
@@ -44,12 +45,14 @@ function getMoviesData(params) {
         .then(function(res){
             if(res.ok){
                 return res.json();
+            }else{
+                return 'erreur'
             }
         })
         .then(function(value){
-            console.log(value);
-            return value
+            console.log(value.results);
         })
         .catch(function(err){
         });
+
 }
