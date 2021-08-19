@@ -35,8 +35,7 @@ function ScrollRight(id) {
 
 scrollPerClick = document.querySelector(".thumbnails_container").clientWidth + 20;
 
-//TODO: gérer l'implémentation de la section ''premier film''
-//TODO: trouver un moyen d'exclure le mieux noté du slider parce qu'il est déja présent en haut
+getFirstMovie();
 getMoviesData("sort_by=-imdb_score", "best_rated_section", moviesPerSlider);
 getMoviesData("genre=action", "category1_slider", moviesPerSlider);
 getMoviesData("genre=comedy", "category2_slider", moviesPerSlider);
@@ -51,12 +50,14 @@ async function getMoviesData(params, targetId, moviesNumber) {
     while(moviesDownloaded < moviesNumber) {
         let result = await fetch(request)
             .then(response => response.json())
-        // console.log(params);
-        // console.log(result);
         result.results.map((cur) => {
             if(moviesDownloaded < moviesNumber){
-                getDetails(cur, target)
-            moviesDownloaded ++;
+                if(targetId==="best_rated_section" && moviesDownloaded===0){
+                    moviesNumber ++
+                } else {
+                    getDetails(cur, target)
+                }
+                moviesDownloaded ++
             }
         })
         pageNum ++;
@@ -70,10 +71,43 @@ async function getDetails(cur, target){
     let detail_result = await fetch(detail_request)
         .then(response => response.json())
         .then(response => {
-            console.log(response);
             target.insertAdjacentHTML(
         "beforeend",
         `<img src=${response.image_url} alt=${response.title} class="thumbnails" id=${response.id}
+                data-genre=${response.genres} data-date_published=${response.date_published} 
+                data-rated=${response.rated} data-countries=${response.countries}
+                data-imdb_score=${response.imdb_score} data-directors=${response.directors}
+                data-actors=${response.actors} data-duration=${response.duration}
+                data-description=${response.description} data-income=${response.worldwide_gross_income}>`)
+        })
+}
+
+async function getFirstMovie(){
+    let request = new Request("http://localhost:8000/api/v1/titles/?sort_by=-imdb_score")
+    let targetText = document.querySelector("#first_film_text_content")
+    let targetImage = document.querySelector("#first_film_container")
+    await fetch(request)
+        .then(response => response.json())
+        .then(response => {
+            response = response.results[0]
+            console.log(response)
+            getFirstMovieDetails(response, targetText, targetImage)
+        })
+}
+
+async function getFirstMovieDetails(res, targetText, targetImage){
+    let detail_request = new Request(res.url);
+    await fetch(detail_request)
+        .then(response => response.json())
+        .then(response => {
+            targetText.insertAdjacentHTML(
+                "beforeend",
+                `<h2 id="first_film_title">${response.title}</h2>
+                <p id="first_film_description">${response.description}</p>`
+            )
+            targetImage.insertAdjacentHTML(
+                "beforeend",
+                `<img src=${response.image_url} alt=${response.title} class="" id=${response.id}
                 data-genre=${response.genres} data-date_published=${response.date_published} 
                 data-rated=${response.rated} data-countries=${response.countries}
                 data-imdb_score=${response.imdb_score} data-directors=${response.directors}

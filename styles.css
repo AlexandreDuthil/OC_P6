@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     scroll-behavior: smooth
 }
 body {
@@ -14,19 +14,20 @@ a {
 }
 header {
     align-items: center;
-    padding: 25px;
     display: flex;
     justify-content: space-evenly;
+    padding: 15px;
     width: 100%;
     position: sticky;
     top: 0;
     z-index: 100;
     text-decoration: none;
 }
-#global_title a {
-    font-size: 3rem;
-    justify-self: start;
-    color: rgb(229, 9, 20);
+#nav {
+    font-size: 1.2rem;
+}
+#logo {
+    height: 100px;
 }
 ul {
     width: 200px;
@@ -50,7 +51,8 @@ ul {
 #first_film_container button {
     margin-bottom: 30px;
     font-size: 1.2rem;
-    border: none;
+    border: solid;
+    width: 180px;
     padding: 5px 8px 5px 8px;
     background-color: white;
     color: black;
@@ -71,7 +73,7 @@ ul {
     width: 100%;
     height: 100%;
     background: rgba(229, 9, 20, 1);
-    border-radius: 3px;
+    border-radius: 1px;
     z-index: -1;
     transform: scaleX(0);
     transform-origin: right;
@@ -108,12 +110,12 @@ ul {
 }
 .categories .switchLeft,
 .categories .switchRight {
-    color: white;
+    color: black;
     height: 80%;
     width: 45px;
     line-height: 250px;
     font-size: 40px;
-    background-color: black;
+    background-color: white;
     font-family: sans-serif;
     top: 50px;
     z-index: 100;
@@ -132,8 +134,8 @@ ul {
     right: 50px;
 }
 .thumbnails {
-    height: 300px;
-    width: 200px;
+    height: 35vh;
+    max-width: 30vw;
     border-radius: 5px;
     margin: 2px;
     cursor: pointer;
@@ -196,13 +198,13 @@ ul {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 20px;
-    left: -20px;
-    width: 130px;
-    height: 130px;
+    top: 1.5rem;
+    left: -2rem;
+    width: 10rem;
+    height: 9rem;
     opacity: 0;
     visibility: hidden;
-    gap: 10px;
+    gap: 0.7rem;
     padding-top: 10px;
     transition: 500ms;
     border-radius: 5px;
@@ -232,6 +234,7 @@ ul {
     transform: scaleX(1);
     transform-origin: left;
 }
+
 #first_film img {
     height: 400px;
     padding: 10px;
