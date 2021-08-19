@@ -163,21 +163,23 @@ ul {
 .modal_content {
     background-color: white;
     padding: 1.5em 2em;
-    width: 500px;
+    width: 80%;
     max-width: 90%;
     border-radius: 5px;
     position: relative;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
     min-width: 500px;
     min-height: 400px;
 }
-.modal_content h2, .modal_content p, .modal_content a, .modal_content div {
-    background-color: white;
-    color: black;
-    align-self: center;
+.modal_text_content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 .modal_img {
-    align-self: center;
+    justify-self: end;
     height: 300px;
     width: 200px;
     border-radius: 5px;
@@ -245,7 +247,7 @@ ul {
 #category2_section,
 #category3_section,
 #best_rated {
-    scroll-margin-top: 100px;
+    scroll-margin-top: 20vh;
 }
 @media(max-width: 720px){
     .thumbnails {

@@ -5,7 +5,7 @@ var scrollAmount_category1_slider = 0;
 var scrollAmount_category2_slider = 0;
 var scrollAmount_category3_slider = 0;
 
-const moviesPerSlider = 15;
+const moviesPerSlider = 7;
 
 function ScrollLeft(id) {
     const sliders = document.querySelector("#"+id);
@@ -67,18 +67,36 @@ async function getMoviesData(params, targetId, moviesNumber) {
 }
 
 async function getDetails(cur, target){
+    let modal_target = document.querySelector("#modal_container")
     let detail_request = new Request(cur.url);
     let detail_result = await fetch(detail_request)
         .then(response => response.json())
         .then(response => {
             target.insertAdjacentHTML(
         "beforeend",
-        `<img src=${response.image_url} alt=${response.title} class="thumbnails" id=${response.id}
-                data-genre=${response.genres} data-date_published=${response.date_published} 
-                data-rated=${response.rated} data-countries=${response.countries}
-                data-imdb_score=${response.imdb_score} data-directors=${response.directors}
-                data-actors=${response.actors} data-duration=${response.duration}
-                data-description=${response.description} data-income=${response.worldwide_gross_income}>`)
+        `<img src=${response.image_url} alt=${response.title} class="thumbnails" id=${response.id}>`)
+            modal_target.insertAdjacentHTML(
+                "afterbegin",
+        `<div id="modal_${response.id}" class="modal">
+                <div class="modal_content">
+                    <div class="modal_text_content">
+                        <h2>Titre</h2>
+                        <p>Genre : ${response.genres}</p>
+                        <p>Date de sortie : ${response.date_published}</p>
+                        <p>Rated : ${response.rated}</p>
+                        <p>Score Imbd : ${response.imdb_score}</p>
+                        <p>Réalisateur : ${response.directors}</p>
+                        <p>Acteurs : ${response.actors}</p>
+                        <p>Durée : ${response.duration}</p>
+                        <p>Pays d'origine : ${response.countries}</p>
+                        <p>Résultat au Box Office : ${response.worldwide_gross_income}</p>
+                        <p>Résumé : ${response.description}</p>
+                    </div>
+                    <img src=${response.image_url} alt=${response.title} class="modal_img">
+                        <a href="" class="modal_close">&times</a>
+                </div>
+            </div>`
+            )
         })
 }
 
@@ -96,6 +114,7 @@ async function getFirstMovie(){
 }
 
 async function getFirstMovieDetails(res, targetText, targetImage){
+    let modal_target = document.querySelector("#modal_container")
     let detail_request = new Request(res.url);
     await fetch(detail_request)
         .then(response => response.json())
@@ -107,12 +126,28 @@ async function getFirstMovieDetails(res, targetText, targetImage){
             )
             targetImage.insertAdjacentHTML(
                 "beforeend",
-                `<img src=${response.image_url} alt=${response.title} class="" id=${response.id}
-                data-genre=${response.genres} data-date_published=${response.date_published} 
-                data-rated=${response.rated} data-countries=${response.countries}
-                data-imdb_score=${response.imdb_score} data-directors=${response.directors}
-                data-actors=${response.actors} data-duration=${response.duration}
-                data-description=${response.description} data-income=${response.worldwide_gross_income}>`)
+                `<img src=${response.image_url} alt=${response.title} class="" id=${response.id}>`)
+            modal_target.insertAdjacentHTML(
+                "afterbegin",
+        `<div id="modal_${response.id}" class="modal">
+                <div class="modal_content">
+                    <div class="modal_text_content">
+                        <h2>Titre</h2>
+                        <p>Genre : ${response.genres}</p>
+                        <p>Date de sortie : ${response.date_published}</p>
+                        <p>Rated : ${response.rated}</p>
+                        <p>Score Imbd : ${response.imdb_score}</p>
+                        <p>Réalisateur : ${response.directors}</p>
+                        <p>Acteurs : ${response.actors}</p>
+                        <p>Durée : ${response.duration}</p>
+                        <p>Pays d'origine : ${response.countries}</p>
+                        <p>Résultat au Box Office : ${response.worldwide_gross_income}</p>
+                        <p>Résumé : ${response.description}</p>
+                    </div>
+                    <img src=${response.image_url} alt=${response.title} class="modal_img">
+                        <a href="" class="modal_close">&times</a>
+                </div>
+            </div>`)
         })
 }
 
