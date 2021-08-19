@@ -103,7 +103,7 @@ ul {
     white-space: nowrap;
     overflow: hidden;
     width: 85%;
-    height: 400px;
+    height: 50vh;
     align-items: center;
     padding-top: 10px; padding-bottom: 10px;
     min-width: 800px;
@@ -174,8 +174,8 @@ ul {
 .modal_content {
     background-color: white;
     padding: 1.5em 2em;
-    width: 80%;
-    max-width: 90%;
+    width: 70%;
+    max-width: 80%;
     border-radius: 5px;
     position: relative;
     display: flex;
@@ -193,10 +193,9 @@ ul {
 
 .modal_img {
     justify-self: end;
-    height: 300px;
-    width: 200px;
+    height: 40vh;
     border-radius: 5px;
-    margin: 2px;
+    margin: 25px;
 }
 
 .modal_close {
@@ -254,7 +253,7 @@ ul {
 }
 
 #first_film img {
-    height: 400px;
+    height: 40vh;
     padding: 10px;
     margin: 20px;
     border-radius: 15px;

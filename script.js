@@ -1,15 +1,15 @@
 
-var scrollPerClick;
-var scrollAmount_best_rated_section = 0;
-var scrollAmount_category1_slider = 0;
-var scrollAmount_category2_slider = 0;
-var scrollAmount_category3_slider = 0;
+let scrollPerClick;
+let scrollAmount_best_rated_section = 0;
+let scrollAmount_category1_slider = 0;
+let scrollAmount_category2_slider = 0;
+let scrollAmount_category3_slider = 0;
 
 const moviesPerSlider = 7;
 
 function ScrollLeft(id) {
     const sliders = document.querySelector("#"+id);
-    var scrollTotal = "scrollAmount_" + id
+    let scrollTotal = "scrollAmount_" + id
     sliders.scrollTo({
         top: 0,
         left: ((window[scrollTotal]) -= scrollPerClick),
@@ -23,7 +23,7 @@ function ScrollLeft(id) {
 
 function ScrollRight(id) {
     const sliders = document.querySelector("#"+id);
-    var scrollTotal = "scrollAmount_" + id
+    let scrollTotal = "scrollAmount_" + id
     if (window[scrollTotal] <= sliders.scrollWidth - sliders.clientWidth) {
         sliders.scrollTo({
             top: 0,
@@ -134,7 +134,8 @@ async function getFirstMovieDetails(res, targetText, targetImage){
             targetImage.insertAdjacentHTML(
                 "beforeend",
                 `<a onclick="openModal('#modal_${response.id}')">
-                        <img src=${response.image_url} alt=${response.title} class="" id=${response.id}>
+                        <img src=${response.image_url} alt=${response.title} 
+                       id=${response.id}>
                       </a>`)
             modal_target.insertAdjacentHTML(
                 "afterbegin",
