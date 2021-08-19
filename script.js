@@ -69,18 +69,21 @@ async function getMoviesData(params, targetId, moviesNumber) {
 async function getDetails(cur, target){
     let modal_target = document.querySelector("#modal_container")
     let detail_request = new Request(cur.url);
-    let detail_result = await fetch(detail_request)
+    await fetch(detail_request)
         .then(response => response.json())
         .then(response => {
             target.insertAdjacentHTML(
         "beforeend",
-        `<img src=${response.image_url} alt=${response.title} class="thumbnails" id=${response.id}>`)
+        `<a onclick="openModal('#modal_${response.id}')">
+                <img src=${response.image_url} alt=${response.title} class="thumbnails" id=${response.id}>
+              </a>`)
+
             modal_target.insertAdjacentHTML(
                 "afterbegin",
         `<div id="modal_${response.id}" class="modal">
                 <div class="modal_content">
                     <div class="modal_text_content">
-                        <h2>Titre</h2>
+                        <h2>${response.title}</h2>
                         <p>Genre : ${response.genres}</p>
                         <p>Date de sortie : ${response.date_published}</p>
                         <p>Rated : ${response.rated}</p>
@@ -90,10 +93,11 @@ async function getDetails(cur, target){
                         <p>Durée : ${response.duration}</p>
                         <p>Pays d'origine : ${response.countries}</p>
                         <p>Résultat au Box Office : ${response.worldwide_gross_income}</p>
-                        <p>Résumé : ${response.description}</p>
+                        <p>Résumé : ${response.long_description}</p>
                     </div>
                     <img src=${response.image_url} alt=${response.title} class="modal_img">
-                        <a href="" class="modal_close">&times</a>
+                        <a class="modal_close"
+                        onclick="closeModal('#modal_${response.id}')">&times</a>
                 </div>
             </div>`
             )
@@ -121,18 +125,23 @@ async function getFirstMovieDetails(res, targetText, targetImage){
         .then(response => {
             targetText.insertAdjacentHTML(
                 "beforeend",
-                `<h2 id="first_film_title">${response.title}</h2>
-                <p id="first_film_description">${response.description}</p>`
+                `<a href="#modal_${response.id}">
+                    <button onclick="openModal('#modal_${response.id}')" class="first_film_button">En savoir plus</button>
+                </a>
+                <h2 id="first_film_title">${response.title}</h2>
+                <p id="first_film_description">${response.long_description}</p>`
             )
             targetImage.insertAdjacentHTML(
                 "beforeend",
-                `<img src=${response.image_url} alt=${response.title} class="" id=${response.id}>`)
+                `<a onclick="openModal('#modal_${response.id}')">
+                        <img src=${response.image_url} alt=${response.title} class="" id=${response.id}>
+                      </a>`)
             modal_target.insertAdjacentHTML(
                 "afterbegin",
         `<div id="modal_${response.id}" class="modal">
                 <div class="modal_content">
                     <div class="modal_text_content">
-                        <h2>Titre</h2>
+                        <h2>${response.title}</h2>
                         <p>Genre : ${response.genres}</p>
                         <p>Date de sortie : ${response.date_published}</p>
                         <p>Rated : ${response.rated}</p>
@@ -142,13 +151,21 @@ async function getFirstMovieDetails(res, targetText, targetImage){
                         <p>Durée : ${response.duration}</p>
                         <p>Pays d'origine : ${response.countries}</p>
                         <p>Résultat au Box Office : ${response.worldwide_gross_income}</p>
-                        <p>Résumé : ${response.description}</p>
+                        <p>Résumé : ${response.long_description}</p>
                     </div>
                     <img src=${response.image_url} alt=${response.title} class="modal_img">
-                        <a href="" class="modal_close">&times</a>
+                        <a class="modal_close" onclick="closeModal('#modal_${response.id}')">&times</a>
                 </div>
             </div>`)
         })
 }
 
-//TODO: création d'une modale en JS ? implémentation des données stockées sur les img
+function openModal(targetId){
+    let target = document.querySelector(targetId)
+    target.classList.add("modal_open")
+}
+
+function closeModal(targetId){
+    let target = document.querySelector(targetId)
+    target.classList.remove("modal_open")
+}
