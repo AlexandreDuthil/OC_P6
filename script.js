@@ -1,9 +1,9 @@
 
 let scrollPerClick;
-let scrollAmount_best_rated_section = 0;
-let scrollAmount_category1_slider = 0;
-let scrollAmount_category2_slider = 0;
-let scrollAmount_category3_slider = 0;
+var scrollAmount_best_rated_section = 0;
+var scrollAmount_category1_slider = 0;
+var scrollAmount_category2_slider = 0;
+var scrollAmount_category3_slider = 0;
 
 const moviesPerSlider = 7;
 
